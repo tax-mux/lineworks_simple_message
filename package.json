@@ -1,7 +1,7 @@
 {
   "name": "lineworks_simple_message",
   "version": "1.0.0",
-  "description": "",
+  "description": "## Usage",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -14,5 +14,6 @@
     "jsonwebtoken": "^9.0.2",
     "qs": "^6.11.2",
     "request": "^2.88.2"
-  }
+  },
+  "devDependencies": {}
 }
