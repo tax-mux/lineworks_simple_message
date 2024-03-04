@@ -29,7 +29,7 @@ async function getAccessToken(){
         "iss": process.env.LINEWORKS_CLIENT_ID,
         "sub": process.env.LINEWORKS_SERVICE_ACCOUNT_ID,
         "iat": Math.floor(Date.now() / 1000),
-        "exp": Math.floor(Date.now() / 1000) + 60 * 60 
+        "exp": Math.floor(Date.now() / 1000) + 60 * 60
     };
 
     debugLog("JWT_CLAIMSET:");
