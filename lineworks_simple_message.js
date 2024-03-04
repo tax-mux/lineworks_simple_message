@@ -77,6 +77,12 @@ async function getAccessToken(){
     });
 }
 
+async function modifyMessage(message) {
+    let newMessage = message;
+    newMessage = newMessage.replace(/\\n/g, "\n"); // 改行コードを置換
+    return newMessage;
+}
+
 /**
  * メッセージを送信する。
  * @param {*} from 
@@ -84,7 +90,7 @@ async function getAccessToken(){
  * @param {*} message 
  */
 async function sendMessage(to, message) {
-
+    message = await modifyMessage(message);
     let accessToken = await getAccessToken();
     let apiUrl = `https://www.worksapis.com/v1.0/bots/${process.env.LINEWORKS_BOT_NO}/users/${to}/messages`;
 

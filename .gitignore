@@ -1,3 +1,5 @@
+node_modules
+.vscode
+
 privatekey.pem
 .env
-node_modules
