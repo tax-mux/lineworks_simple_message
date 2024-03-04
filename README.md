@@ -1,32 +1,17 @@
 # LINEWORKS Simple Message Sender
 
-## Usage
-
 To send a message to a LINEWORKS user via bot, you can use the following script:
-
-## Table of Contents
-
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Installation
 
 Expand the script to any folder in an environment where Node.js operates.
-展開後、以下のコマンドをコンソールから実行します。
+After expanding, execute the following command from the console.
 
-node init
-
+npm init
 
 ## Usage
 
-Examples and instructions on how to use your project.
+node index -to <recipient_user_id> -message <message>
 
-## Contributing
-
-Guidelines for contributing to your project, including how to report issues and submit pull requests.
-
-## License
-
-Information about the license under which your project is distributed.
+recipient_user_id: lineworks user. user@domain
+message: text message. if you need line break in message, use escape sequence \\n.
