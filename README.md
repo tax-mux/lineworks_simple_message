@@ -11,7 +11,9 @@ npm init
 
 ## Usage
 
-node index -to <recipient_user_id> -message <message>
+call index.js in command line as belows.
 
-recipient_user_id: lineworks user. user@domain
-message: text message. if you need line break in message, use escape sequence \\n.
+node index -to [recipient_user_id] -message [message]
+
+* recipient_user_id: lineworks user. (user@company-domain)
+* message: text message. if you need line break in message, use escape sequence \\n.
