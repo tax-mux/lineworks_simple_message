@@ -1,6 +1,9 @@
-// Import the lineworks_simple_message module
-const { getAccessToken, sendMessage } = require("./lineworks_simple_message");
+/**
+ * Lineworks api v2.0を用いて、シンプルなメッセージを送信する。
+ */
 
+// Import the lineworks_simple_message module
+const { sendMessage } = require("./lineworks_simple_message");
 
 async function main() {
     let argv = process.argv;
