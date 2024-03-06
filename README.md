@@ -18,6 +18,10 @@ npm init
 
 call index.js in command line as belows.
 
+copy .env.sample into .env and modify setting for your environmet.
+
+copy privatekey.pem.sample into privatekey.pen and overwrite your privatekey. You can get this key from Lineworks Developers.
+
 ### sending message directory:
 
 ```
