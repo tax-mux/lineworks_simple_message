@@ -1,6 +1,6 @@
 # LINEWORKS Simple Message Sender
 
-To send a message to a LINEWORKS user via bot, you can use the following script:
+This is script To send a message to a LINEWORKS user via bot.
 
 ## Installation
 
