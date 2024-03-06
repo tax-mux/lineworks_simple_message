@@ -9,8 +9,9 @@ const express = require("express");
 const app = express();
 let to;
 
-app.use(express.json());
+app.use(eress.json());
 
+// このメソッドはRUNDECKに特化して書いているので、他のツールに対応する場合は変更が必要。
 app.post("/", async (req, res) => {
     let emoji = (req.body.execution.status == "succeeded") ? "🆗" : "🆖";
     let message = `${emoji} Project: ${req.body.execution.project}\nstatus: ${req.body.execution.status}`;
