@@ -7,9 +7,14 @@ const axios = require('axios');
  * デバッグモードの時にログを出力する。
  * @param {*} message 
  */
-async function debugLog(message){
-    if(process.env.DEBUG_MODE==="True"){
-        console.log(message);
+async function debugLog(message) {
+    if (process.env.DEBUG_MODE === "True") {
+        if (message !== undefined) {
+            console.log(message);
+        } else {
+            console.log();
+
+        }
     }
 }
 
@@ -19,7 +24,7 @@ async function debugLog(message){
  * ハッシュアルゴリズムはRS256を用いる。
  * @return {string} アクセストークン
  */
-async function getAccessToken(){
+async function getAccessToken() {
     let jwtHeader = { "alg": "RS256", "typ": "JWT" };
     debugLog("JWT_HEADER:");
     debugLog(JSON.stringify(jwtHeader));
@@ -37,8 +42,11 @@ async function getAccessToken(){
     debugLog();
 
     let private_key = require('fs').readFileSync('privatekey.pem', 'utf8');
+    debugLog("PRIVATE_KEY:");
+    debugLog(private_key);
+    debugLog();
 
-    let assertion = jwt.sign(jwtClaimSet, private_key, { algorithm: 'RS256', header: jwtHeader});
+    let assertion = jwt.sign(jwtClaimSet, private_key, { algorithm: 'RS256', header: jwtHeader });
     debugLog("ASSERTION:");
     debugLog(assertion);
     debugLog();
@@ -101,7 +109,7 @@ async function sendMessage(to, message) {
             "text": message
         }
     };
- 
+
     const headers = {
         'Content-Type': 'application/json',
         'authorization': `Bearer ${accessToken}`

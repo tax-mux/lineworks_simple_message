@@ -14,15 +14,21 @@ app.use(express.json());
 // このメソッドはRUNDECKに特化して書いているので、他のツールに対応する場合は変更が必要。
 app.post("/", async (req, res) => {
     let sendTo = req.query.to;
-    if(sendTo === undefined) sendTo = to;
+    if (sendTo === undefined) sendTo = to;
     if (sendTo !== undefined) {
+        console.log(sendTo);
+        console.log(req.body);
         let emoji = (req.body.execution.status == "succeeded") ? "🆗" : "🆖";
         let message = `${emoji} Project: ${req.body.execution.project}\nstatus: ${req.body.execution.status}`;
         message += `\n\n${req.body.execution.job.description}`;
         message += `\n\n${req.body.execution.job.permalink}`;
-        await sendMessage(sendTo, message);
-        console.log(req.body);
-        res.send("OK");
+        try {
+            await sendMessage(sendTo, message);
+            res.send("OK");
+        } catch (error) {
+            console.error(error);
+            res.status(500).send("An error occurred while sending the message.");
+        }
     } else {
         res.send("sendTo is not defined. append ?to=[to] to the url.");
     }
