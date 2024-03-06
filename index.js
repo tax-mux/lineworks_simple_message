@@ -12,7 +12,7 @@ let to;
 app.use(express.json());
 
 app.post("/", async (req, res) => {
-    let emoji = (req.body.execution.status=="succeeded")? "🆗" : "🆖";
+    let emoji = (req.body.execution.status == "succeeded") ? "🆗" : "🆖";
     let message = `${emoji} Project: ${req.body.execution.project}\nstatus: ${req.body.execution.status}`;
     message += `\n\n${req.body.execution.job.description}`;
     await sendMessage(to, message);
