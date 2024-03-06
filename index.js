@@ -9,16 +9,23 @@ const express = require("express");
 const app = express();
 let to;
 
-app.use(eress.json());
+app.use(express.json());
 
 // このメソッドはRUNDECKに特化して書いているので、他のツールに対応する場合は変更が必要。
 app.post("/", async (req, res) => {
-    let emoji = (req.body.execution.status == "succeeded") ? "🆗" : "🆖";
-    let message = `${emoji} Project: ${req.body.execution.project}\nstatus: ${req.body.execution.status}`;
-    message += `\n\n${req.body.execution.job.description}`;
-    await sendMessage(to, message);
-    console.log(req.body);
-    res.send("OK");
+    let sendTo = req.query.to;
+    if(sendTo === undefined) sendTo = to;
+    if (sendTo !== undefined) {
+        let emoji = (req.body.execution.status == "succeeded") ? "🆗" : "🆖";
+        let message = `${emoji} Project: ${req.body.execution.project}\nstatus: ${req.body.execution.status}`;
+        message += `\n\n${req.body.execution.job.description}`;
+        message += `\n\n${req.body.execution.job.permalink}`;
+        await sendMessage(sendTo, message);
+        console.log(req.body);
+        res.send("OK");
+    } else {
+        res.send("sendTo is not defined. append ?to=[to] to the url.");
+    }
 });
 
 async function main() {
@@ -39,7 +46,7 @@ async function main() {
     }
 
     // パラメータをチェックして、問題が無ければメッセージを送信する。
-    if (port !== undefined && to !== undefined) {
+    if (port !== undefined) {
         // Start the webhook server
         app.listen(port, () => {
             console.log(`Example app listening at ${process.env.WEBHOOK_URL}:${port}`);

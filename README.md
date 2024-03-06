@@ -37,5 +37,5 @@ node index -to [recipient_user_id] -message [message]
 node index -to [recipient_user_id] -port [portnumber]
 ```
 
-* recipient_user_id: lineworks user. (e.g., user@company-domain)
+* recipient_user_id: lineworks user. (e.g., user@company-domain). If you include query parameter "to" in your webhook url, you can use this script without this parameter in command line.(e.q, http://yourwebhook.url:3000?to=user@companydomain)
 * portnumber: webhook listen port. (e.g, 3000)
