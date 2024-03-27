@@ -3,9 +3,12 @@
  */
 
 // Import the lineworks_simple_message module
-require('dotenv').config();
-const { sendMessage } = require("./lineworks_simple_message");
-const express = require("express");
+import dotenv from 'dotenv';
+dotenv.config();
+
+import express from "express";
+import { sendMessage } from "./lineworks_simple_message.mjs";
+
 const app = express();
 let to;
 
@@ -69,3 +72,4 @@ async function main() {
 }
 
 main();
+
