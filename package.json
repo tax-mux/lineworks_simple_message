@@ -4,7 +4,7 @@
   "description": "## Usage",
   "main": "index.mjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "author": "",
   "license": "ISC",
@@ -14,8 +14,10 @@
     "express": "^4.18.3",
     "jsonwebtoken": "^9.0.2",
     "lineworks_jwt": "file:../lineworks_jwt",
+    "mocha": "^10.4.0",
     "node-webhooks": "^1.4.2",
     "qs": "^6.11.2",
     "request": "^2.88.2"
-  }
+  },
+  "type": "module"
 }
